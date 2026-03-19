@@ -1,7 +1,14 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  margin: 2;
+  margin: 0;
   padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 body {
@@ -11,7 +18,30 @@ body {
 img,
 picture,
 svg,
-video {
+video,
+canvas {
   display: block;
   max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
 }
