@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dot Trail Mapping Experiment</title>
+
+    <script src="https://unpkg.com/konva@10/konva.min.js"></script>
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="toolBar">
+        <h1>Dot Trail Mapping</h1>
+        <p>
+          Move your cursor across the stage to create a trail of dots. Faster
+          movement creates more spacing, while slower movement creates a denser
+          path.
+        </p>
+
+        <label for="trail-colour">Trail colour</label>
+        <input
+          type="color"
+          id="trail-colour"
+          name="trail-colour"
+          value="#ff4fa3"
+        />
+
+        <label for="dot-size">Dot size</label>
+        <input
+          type="range"
+          id="dot-size"
+          name="dot-size"
+          min="4"
+          max="30"
+          value="10"
+        />
+
+        <label for="fade-speed">Fade speed</label>
+        <input
+          type="range"
+          id="fade-speed"
+          name="fade-speed"
+          min="0"
+          max="100"
+          value="35"
+        />
+      </div>
+
+      <div class="stageContainer" id="stage-container">
+        <div id="konva-stage"></div>
+      </div>
+    </main>
+  </body>
+</html>

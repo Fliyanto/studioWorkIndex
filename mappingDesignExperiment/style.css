@@ -1,0 +1,77 @@
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f6f3f4;
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  color: #1f1f1f;
+}
+
+.toolBar {
+  /* added this to make the top section feel cleaner and more structured */
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 2rem 2.25rem;
+  background: #f6f3f4;
+  border-bottom: 1px solid #ddd4d8;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.toolBar h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.toolBar p {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #5f5a5d;
+  max-width: 620px;
+}
+
+.toolBar label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #3a3538;
+  margin-top: 0.3rem;
+}
+
+.toolBar input[type="range"] {
+  width: 220px;
+  accent-color: #6e6e6e;
+}
+
+.toolBar input[type="color"] {
+  width: 52px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #d4c9ce;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.stageContainer {
+  /* added this to centre the stage better and give more breathing room */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+  background: #f6f3f4;
+}
+
+#konva-stage {
+  /* added this to make the canvas frame look softer and more polished */
+  border: 1.5px solid #d8ccd1;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fcfbfb;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
