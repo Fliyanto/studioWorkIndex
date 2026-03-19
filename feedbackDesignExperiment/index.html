@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reaction Dot Test</title>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tone/15.3.5/Tone.js"
+      integrity="sha512-F1myjNkIKU5XJtOs1HXRo/zOjiUsABgFEEGKLx/riwK82jRThZFebEnfF2HWo9eeC+iC1Nwwnn9Vj6OGq+r7rQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <!-- added this to give a quick intro before they jump into the game -->
+    <dialog id="warningDialog">
+      <p id="dialogText">
+        Tiny reaction game. Pick a mode, wait for the countdown, then click each
+        dot before it turns red.
+      </p>
+      <button id="acknowledgedBtn" type="button">Yep got it</button>
+    </dialog>
+
+    <!-- added this to show the final result once all 20 dots have appeared -->
+    <dialog id="resultDialog">
+      <h2>Round done</h2>
+      <p id="finalScoreText">You got 0 out of 20.</p>
+      <button id="playAgainBtn" type="button">Go again</button>
+    </dialog>
+
+    <main>
+      <h1>Reaction Dot Test</h1>
+
+      <p class="introText">
+        Click the dots before they turn red. You only get 0.5 seconds for each
+        one, so don’t slack.
+      </p>
+
+      <!-- added this so the player always knows what is going on -->
+      <p id="statusText">Pick a mode to start.</p>
+
+      <!-- added this so difficulty can change the dot size -->
+      <div class="modeButtons">
+        <button class="modeBtn" data-mode="easy">Easy</button>
+        <button class="modeBtn" data-mode="medium">Medium</button>
+        <button class="modeBtn" data-mode="hard">Hard</button>
+      </div>
+
+      <!-- added this to show countdown and small game info -->
+      <div class="gameInfo">
+        <p id="countdownText">-</p>
+        <p id="scoreText">Hit: 0 | Missed: 0 | Dot: 0 / 20</p>
+      </div>
+
+      <!-- added this as the full area where the dots will spawn -->
+      <section id="gameArea" aria-label="Reaction game area"></section>
+    </main>
+  </body>
+</html>

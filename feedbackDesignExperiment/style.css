@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* added this to keep the whole page clean, dark, and minimal */
+body {
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #121212;
+  color: #f2f2f2;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+/* added this to centre everything and keep the layout simple */
+main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: #f5f5f5;
+}
+
+.introText {
+  max-width: 620px;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #b9b9b9;
+}
+
+/* added this to make the live feedback text feel clearer but still subtle */
+#statusText {
+  font-size: 1rem;
+  color: #d5d5d5;
+  min-height: 1.5rem;
+}
+
+/* added this to keep the mode buttons neat and balanced */
+.modeButtons {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.modeBtn,
+#playAgainBtn,
+#acknowledgedBtn {
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #2b2b2b;
+  border-radius: 999px;
+  background: #1b1b1b;
+  color: #f4f4f4;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.modeBtn:hover,
+#playAgainBtn:hover,
+#acknowledgedBtn:hover {
+  cursor: pointer;
+  background: #232323;
+  border-color: #3a3a3a;
+}
+
+.modeBtn:active,
+#playAgainBtn:active,
+#acknowledgedBtn:active {
+  transform: scale(0.97);
+}
+
+/* added this to separate the little game info from the title area */
+.gameInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.4rem;
+}
+
+#countdownText {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f1f1f1;
+  min-height: 2.5rem;
+}
+
+#scoreText {
+  font-size: 0.95rem;
+  color: #b8b8b8;
+}
+
+/* added this to make the play area feel like a proper game board */
+#gameArea {
+  position: relative;
+  width: min(78vw, 760px);
+  height: min(58vh, 500px);
+  border: 1px solid #2c2c2c;
+  border-radius: 24px;
+  background: #181818;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* added this for the actual reaction dots */
+.reactionDot {
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  background: #d9d9d9;
+  transform: translateZ(0);
+  transition:
+    background-color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.reactionDot:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+/* added this to show successful feedback clearly but softly */
+.reactionDot.hit {
+  background: #7ea8ff;
+  box-shadow: 0 0 18px rgba(126, 168, 255, 0.24);
+}
+
+/* added this to show missed feedback clearly but not too harsh */
+.reactionDot.missed {
+  background: #d97c7c;
+  box-shadow: 0 0 18px rgba(217, 124, 124, 0.2);
+}
+
+/* added this to make both popups feel cleaner and more on-theme */
+#warningDialog,
+#resultDialog {
+  width: min(92vw, 420px);
+  padding: 1.5rem;
+  border: 1px solid #2f2f2f;
+  border-radius: 22px;
+  background: #1a1a1a;
+  color: #f2f2f2;
+}
+
+/* added this so the popup only uses flex when open */
+#warningDialog[open],
+#resultDialog[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+/* added this to dim the page behind the popup */
+#warningDialog::backdrop,
+#resultDialog::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+#dialogText,
+#finalScoreText,
+#resultDialog h2 {
+  color: #f2f2f2;
+}
+
+#dialogText,
+#finalScoreText {
+  line-height: 1.6;
+  color: #c6c6c6;
+}
+
+#resultDialog h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
