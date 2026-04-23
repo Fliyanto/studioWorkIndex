@@ -198,6 +198,218 @@
           </p>
         </div>
       </section>
+
+      <section class="content-box assignment-two-section">
+        <div class="section-heading">
+          <p class="section-label">04</p>
+          <h2>Assignment 2</h2>
+        </div>
+
+        <div class="section-content">
+          <section class="a2-block">
+            <h3>Project Overview</h3>
+            <p>
+              Pulse Diary is an interactive web-based prototype that explores
+              how daily emotions can be translated into a visual pulse. Building
+              on the initial concept developed in Assignment 1, this stage
+              focuses on turning that idea into a functional mock-up that users
+              can interact with and respond to through peer testing. The project
+              invites users to record how they feel on a given day using
+              emotional selections and adjustable input values, which then
+              generate a pulse-based visual outcome. Rather than treating
+              emotion as something fixed or easily categorised, the prototype
+              explores it as layered, shifting, and personal. This page
+              documents the development of the project so far, including its
+              conceptual direction, technical implementation, prototype outcome,
+              peer testing insights, and the next steps for further refinement.
+            </p>
+          </section>
+
+          <section class="a2-block">
+            <h3>Conceptual Response</h3>
+            <p>
+              This project explores how emotion can be translated into a visual
+              and interactive form through a browser-based experience. The
+              chosen creative context is a personal reflective tool, where users
+              are invited to record how they feel and see that emotional state
+              represented through a pulse visualisation. Rather than presenting
+              emotion as fixed or easily measurable, the project approaches it
+              as something layered, unstable, and deeply personal. The main
+              interaction design principle explored in this work is feedback, as
+              the user's emotional selections and slider inputs directly shape
+              the generated pulse. This principle is applied in a more
+              expressive way by using the pulse not as literal health data, but
+              as an abstract emotional response. The project aims to create a
+              space that feels reflective rather than clinical, allowing users
+              to see their feelings translated into movement, rhythm, and visual
+              change.
+            </p>
+          </section>
+
+          <section class="a2-block">
+            <h3>Prototype Overview</h3>
+            <p>
+              The current prototype presents the project as an interactive
+              emotional check-in tool centred around a pulse-based visual
+              response. Users are invited to record how they feel on a chosen
+              day by selecting an emotion and adjusting a range of input values
+              that influence the resulting pulse. At this stage, the prototype
+              focuses on the core interaction flow rather than a fully expanded
+              system, allowing users to experience the relationship between
+              emotional input and visual output. The mock-up already establishes
+              the overall layout, basic interaction logic, and pulse generation
+              concept, while also giving a sense of how the final experience may
+              develop over time through repeated entries. Although some areas
+              remain incomplete or open to refinement, the prototype functions
+              as a working demonstration of the project's main idea and formed
+              the basis for peer user testing and feedback.
+            </p>
+          </section>
+
+          <section class="a2-block">
+            <h3>Technical Approach</h3>
+            <p>
+              The prototype is structured across three main files:
+              <code>index.html</code>, <code>style.css</code>, and
+              <code>main.js</code>, with each file handling a different part of
+              the experience. In <code>index.html</code>, I built the core
+              interface structure of the project, including the sidebar
+              calendar, selected day display, top navigation bar, daily and
+              weekly view containers, the SVG heartbeat display, and the
+              slide-in emotion entry modal. This file establishes the full
+              interaction layout before any styling or behaviour is added,
+              making the project readable as a complete system at the markup
+              level. The HTML also uses clear class naming and data attributes,
+              such as <code>data-view</code> and <code>data-emotion</code>, so
+              that JavaScript can target interactive elements more cleanly later
+              on.
+            </p>
+
+            <p>
+              In <code>style.css</code>, I focused on translating the concept
+              into a visually cohesive interface. The styling uses CSS custom
+              properties to manage the full colour system, spacing, shadows,
+              radii, and theme values, which makes the design easier to maintain
+              and switch between dark and light mode. The layout is built with
+              CSS Grid and Flexbox, allowing the interface to separate into a
+              sidebar and main monitor area on desktop while still collapsing
+              responsively on smaller screens. I also used layered gradients,
+              blur, glow, and shadow effects to give the interface a polished,
+              slightly atmospheric quality rather than a plain dashboard look.
+              The heartbeat monitor itself is styled as a large display panel
+              with a grid background, animated glow layer, and an SVG line that
+              feels active once a pulse is generated.
+            </p>
+
+            <p>
+              The main interaction logic is handled in <code>main.js</code>. I
+              used a <code>DOMContentLoaded</code> wrapper so all interface
+              elements are available before any logic runs, then selected the
+              main buttons, sliders, modal controls, calendar days, and SVG
+              pulse elements through <code>querySelector</code> and
+              <code>getElementById</code>. From there, I created a central
+              <code>appState</code> object to store the current view, theme,
+              selected emotion, selected date, whether a pulse has been
+              generated yet, the slider values, and the user's note. This allows
+              the prototype to manage the interface as a state-driven system
+              rather than a set of disconnected button clicks.
+            </p>
+
+            <p>
+              One of the most important technical parts of the project is the
+              way the pulse line is generated. Rather than swapping between
+              preset images, the prototype builds the SVG path dynamically in
+              JavaScript using the
+              <code>buildPulsePath()</code> function. This function reads the
+              current emotional input values and translates them into visual
+              properties such as amplitude, jitter, recovery, and uplift.
+              Different emotions then modify those behaviours further. For
+              example, calm reduces amplitude and jitter, angry increases them,
+              and anxious produces a more unstable result. The code then
+              generates a full SVG path string point by point, creating either
+              smoother curves or sharper angular changes depending on the
+              emotional state selected. This means the pulse is not decorative
+              only, but computationally shaped by the user's input.
+            </p>
+
+            <p>
+              The colour system is also handled programmatically. A palette
+              object maps emotions to different colours, and the
+              <code>applyLineColor()</code> function changes the stroke of the
+              heartbeat line after a pulse is generated. For the mixed state, I
+              added a function that creates an SVG linear gradient inside a
+              <code>&lt;defs&gt;</code> element if it does not already exist,
+              then applies that gradient to the pulse stroke. This allowed the
+              pulse colour to act as another layer of emotional feedback instead
+              of relying on shape alone.
+            </p>
+
+            <p>
+              I also used JavaScript to manage the broader flow of the
+              interface. Functions such as <code>setView()</code>,
+              <code>toggleTheme()</code>, <code>openModal()</code>,
+              <code>closeModal()</code>, <code>setEmotion()</code>, and
+              <code>selectCalendarDay()</code> update the visible state of the
+              prototype and keep the layout interactive. Event listeners are
+              attached to the view buttons, theme toggle, modal controls,
+              emotion chips, calendar buttons, sliders, note field, and keyboard
+              input. This means the interface responds in real time as users
+              move sliders, switch views, or update text, especially once the
+              pulse has already been generated. The monitor text is also updated
+              through <code>updateMonitorText()</code> so the written feedback
+              below the pulse changes alongside the visual response.
+            </p>
+
+            <p>
+              Overall, the technical approach focuses on turning emotional input
+              into a responsive visual system through a combination of semantic
+              HTML structure, atmosphere-driven CSS styling, and state-based
+              JavaScript logic. The prototype is still limited in scope,
+              particularly because the weekly view is currently a preview rather
+              than a fully data-driven history system, but the current
+              implementation already demonstrates the core mechanism of the
+              project: user emotion is entered through interface controls and
+              translated into a changing pulse that acts as a form of mediated
+              visual feedback.
+            </p>
+          </section>
+
+          <section class="a2-block">
+            <h3>Live Prototype</h3>
+            <p>To be added.</p>
+          </section>
+
+          <section class="a2-block">
+            <h3>Prototype Screenshots</h3>
+            <p>To be added.</p>
+          </section>
+
+          <section class="a2-block">
+            <h3>Peer User Testing</h3>
+            <p>To be added.</p>
+          </section>
+
+          <section class="a2-block">
+            <h3>Feedback Reflection</h3>
+            <p>To be added.</p>
+          </section>
+
+          <section class="a2-block">
+            <h3>Planned Improvements / Next Steps</h3>
+            <p>To be added.</p>
+          </section>
+
+          <section class="a2-block">
+            <h3>Project Timeline</h3>
+            <p>To be added.</p>
+          </section>
+
+          <section class="a2-block">
+            <h3>Closing Reflection</h3>
+            <p>To be added.</p>
+          </section>
+        </div>
+      </section>
     </main>
   </body>
 </html>
